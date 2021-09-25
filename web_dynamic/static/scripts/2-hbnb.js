@@ -1,3 +1,4 @@
+$(document).ready(function () {
 $(function ()
 {
     $.get("http://0.0.0.0:5001/api/v1/status/", function (data, textStatus)
@@ -11,15 +12,14 @@ $(function ()
     });
 });
 
-$(document).ready(function () {
-    let amty_id = {};
-    if ($("input[type='checkbox']").prop(":checked")) {
-        amty_id[$(this).data('id')] = $(this).data('name');
-        console.log(amty_id)
+
+  let ampty_id = {}
+  $('input[type=checkbox]').change(function () {
+    if ($(this).is(':checked')) {
+      ampty_id[$(this).data('id')] = $(this).data('name');
     } else {
-        delete amty_id[$(this).data('id')];
+      delete ampty_id[$(this).data('id')];
     }
-    $('div.amenities > h4').text(Object.values(amty_id).join(', '));
-
+      $('.amenities h4').text(Object.values(ampty_id).join(', '));
+  });
 });
-
