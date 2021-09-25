@@ -5,5 +5,5 @@ $(document).ready(function () {
   } else {
     delete amty_id[$(this).data('id')];
   }
-  $('.amenities H4').text(Object.values(amenities).join(', '));
+  $('.amenities h4').text(Object.values(amenities).join(', '));
   });
