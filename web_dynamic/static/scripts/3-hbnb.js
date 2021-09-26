@@ -38,12 +38,16 @@ $.ajax({
     let index = 0;
     for (index = 0; index < data.length(); index ++){
       place = data[index]
-      $('.places ').append('<article><h2>'{{ place.name }}'</h2><div class="price_by_night">$'{{ place.price_by_night }}'</div><div class="information"><div class="max_guest">'{{ place.max_guest }} 'Guest{% if place.max_guest != 1 %}s{% endif %}</div><div class="number_rooms">'{{ place.number_rooms }}'Bedroom{% if place.number_rooms != 1 %}s{% endif%}</div><div class="number_bathrooms">'{{ place.number_bathrooms }}'Bathroom{% if place.number_bathrooms != 1%}s{% endif %}</div></div><div class="user"><b>Owner:</b>'{{ place.user.first_name }} {{ place.user.last_name }}'</div><div class="description">'{{ place.description | safe }}'</div></article>)
+      $('.places').append('<article><h2>'{{ place.name }}'</h2><div class="price_by_night">$'{{ place.price_by_night }}'</div><div class="information"><div class="max_guest">'{{ place.max_guest }} 'Guest{% if place.max_guest != 1 %}s{% endif %}</div><div class="number_rooms">'{{ place.number_rooms }}'Bedroom{% if place.number_rooms != 1 %}s{% endif%}</div><div class="number_bathrooms">'{{ place.number_bathrooms }}'Bathroom{% if place.number_bathrooms != 1%}s{% endif %}</div></div><div class="user"><b>Owner:</b>'{{ place.user.first_name }} {{ place.user.last_name }}'</div><div class="description">'{{ place.description | safe }}'</div></article>');
     }
   })
   // Code to run if the request fails; the raw request and
   // status codes are passed to the function
-  .fail(function (xhr, status, errorThrown) {
-  ????? como tratar el error
-
-});
+  .fail(function (jqXHR, textStatus, errorThrown) {
+    if (jqXHR.responseJSON) {
+        // handle JSON
+    }else {
+        console.log("error400: Not a JSON");
+      }
+    })
+})
